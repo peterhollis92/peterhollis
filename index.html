@@ -10,7 +10,7 @@
     <meta name="description" content="Official website of Pete Hollis, artist and music producer. Stream music on Spotify, Apple Music, Tidal, and more. Available for production and mixing work.">
     
     <!-- ====== ADDITIONAL SEO META TAGS ====== -->
-    <meta name="keywords" content="Pete Hollis, music producer, artist, mixing, mastering, Spotify, Apple Music, Tidal, music production, sound engineer">
+    <meta name="keywords" content="Pete Hollis, music producer, artist, mixing, mastering, Spotify, Apple Music, Tidal, music production, sound engineer, music consultant">
     <meta name="author" content="Pete Hollis">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
@@ -61,7 +61,7 @@
       "image": "https://i.imgur.com/vdWYUzo.jpeg",
       "jobTitle": "Music Artist & Producer",
       "description": "Music artist and producer creating immersive sonic experiences.",
-      "knowsAbout": ["Music Production", "Mixing", "Mastering", "Music Composition", "Audio Engineering"],
+      "knowsAbout": ["Music Production", "Mixing", "Mastering", "Music Composition", "Audio Engineering", "Music Consultation"],
       "sameAs": [
         "https://open.spotify.com/artist/6vBZ0s79GTDMXwwnkBqnIT",
         "https://music.apple.com/us/artist/pete-hollis/1639288325",
@@ -133,6 +133,34 @@
 }
 </script>
 
+<!-- ADD THIS NEW STRUCTURED DATA FOR MUSIC CONSULTATION SERVICE -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Music Consultation",
+  "provider": {
+    "@type": "Person",
+    "name": "Pete Hollis",
+    "jobTitle": "Music Consultant"
+  },
+  "description": "One-on-one music consultation sessions via Zoom. Get expert feedback on your music, production techniques, songwriting, and career guidance.",
+  "offers": {
+    "@type": "Offer",
+    "price": "30",
+    "priceCurrency": "USD",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "30",
+      "priceCurrency": "USD",
+      "billingIncrement": "1",
+      "unitCode": "HUR"
+    },
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -157,10 +185,10 @@
 </script>
 
 <!-- ====== LONG-TAIL KEYWORD TAGS ====== -->
-<meta name="subject" content="Indie Pop Music Producer | New Artist 2026 | Music Production Services">
-<meta name="classification" content="Music, Entertainment, Artist, Producer">
+<meta name="subject" content="Indie Pop Music Producer | New Artist 2026 | Music Production Services | Music Consultation">
+<meta name="classification" content="Music, Entertainment, Artist, Producer, Consultant">
 <meta name="category" content="Music & Audio">
-<meta name="topic" content="Indie Pop Production, Music Mixing, Singer">
+<meta name="topic" content="Indie Pop Production, Music Mixing, Singer, Music Consultation">
 
 <!-- ====== REVISIT & DISTRIBUTION ====== -->
 <meta name="revisit-after" content="7 days">
@@ -185,15 +213,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-	    @font-face {
-        font-family: 'Averia-Serif-GWF-Light';
-        src:url('Averia-Serif-GWF-Light.ttf.woff') format('woff'),
-            url('Averia-Serif-GWF-Light.ttf.svg#Averia-Serif-GWF-Light') format('svg'),
-            url('Averia-Serif-GWF-Light.ttf.eot'),
-            url('Averia-Serif-GWF-Light.ttf.eot?#iefix') format('embedded-opentype'); 
-        font-weight: normal;
-        font-style: normal;
-	}
+        @font-face {
+            font-family: 'Averia-Serif-GWF-Light';
+            src:url('Averia-Serif-GWF-Light.ttf.woff') format('woff'),
+                url('Averia-Serif-GWF-Light.ttf.svg#Averia-Serif-GWF-Light') format('svg'),
+                url('Averia-Serif-GWF-Light.ttf.eot'),
+                url('Averia-Serif-GWF-Light.ttf.eot?#iefix') format('embedded-opentype'); 
+            font-weight: normal;
+            font-style: normal;
+        }
+        
         :root {
             --forest-green: #0a2f1d;
             --deep-forest: #072018;
@@ -241,7 +270,7 @@
             border-bottom: 1px solid rgba(138, 154, 91, 0.3);
             position: relative;
             overflow: hidden;
-			min-height: 390px; /* Add this line - adjust value as needed */
+            min-height: 390px;
         }
 
         .name-background {
@@ -387,6 +416,7 @@
             padding: 25px;
             border: 1px solid rgba(138, 154, 91, 0.3);
             transition: all 0.3s ease;
+            margin-bottom: 30px;
         }
 
         .work-section:hover {
@@ -454,6 +484,121 @@
             box-shadow: 0 5px 15px rgba(201, 169, 89, 0.3);
         }
 
+        /* UPDATED BOOKING SECTION STYLES */
+        .booking-section {
+            background: rgba(138, 154, 91, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(138, 154, 91, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .booking-section:hover {
+            background: rgba(138, 154, 91, 0.15);
+            border-color: var(--accent-gold);
+        }
+
+        .booking-content {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .booking-icon {
+            background-color: var(--forest-green);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 2px solid var(--accent-gold);
+            position: relative;
+        }
+
+        /* GLOWING EFFECT FOR THE ICON */
+        .booking-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .booking-section:hover .booking-icon::after {
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(201, 169, 89, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(201, 169, 89, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(201, 169, 89, 0);
+            }
+        }
+
+        .booking-icon i {
+            font-size: 32px;
+            color: var(--accent-gold);
+        }
+
+        .booking-text h3 {
+            font-size: 1.6rem;
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-family: 'Averia-Serif-GWF-Light', serif;
+        }
+
+        .booking-text p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            font-weight: 300;
+            font-family: 'Averia-Serif-GWF-Light', serif;
+        }
+
+        .booking-button {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--forest-green);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: 'Averia-Serif-GWF-Light', serif;
+        }
+
+        .booking-button:hover {
+            background-color: #d8b96a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 169, 89, 0.3);
+        }
+
+        .price-info {
+            color: white; /* CHANGED FROM GOLD TO WHITE */
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
         footer {
             text-align: center;
             padding: 25px 30px;
@@ -486,7 +631,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .work-content {
+            .work-content, .booking-content {
                 flex-direction: column;
                 text-align: center;
                 gap: 20px;
@@ -498,7 +643,7 @@
             
             .subtitle {
                 font-size: 1.3rem;
-				   margin-top: -10px; 
+                margin-top: -10px; 
             }
             
             .header-content {
@@ -517,6 +662,10 @@
             
             .section {
                 padding: 25px 20px;
+            }
+            
+            .work-section, .booking-section {
+                padding: 20px;
             }
             
             header {
@@ -550,7 +699,7 @@
 
        <div class="about-section">
             <h2 class="about-title">About</h2>
-            <p class="tagline">Pete is a retro-pop producer, multi-instrumentalist, and singer-songwriter based in Chicago, IL, creating dreamy, nostalgic music in their apartment studio. Drawing inspiration from legends like Whitney Houston, Anita Baker, the Isley Brothers and more. Pete’s music is a colorful blend of pop, funk, and 80’s textures that make you feel like you’ve always known the song, even when it’s your first time listening.</p>
+            <p class="tagline">Pete is a retro-pop producer, multi-instrumentalist, and singer-songwriter based in Chicago, IL, creating dreamy, nostalgic music in their apartment studio. Drawing inspiration from legends like Whitney Houston, Anita Baker, the Isley Brothers and more. Pete's music is a colorful blend of pop, funk, and 80's textures that make you feel like you've always known the song, even when it's your first time listening.</p>
         </div>
 
         <div class="section">
@@ -616,6 +765,8 @@
             </div>
 
             <h2 class="section-title">Let's Work Together</h2>
+            
+            <!-- SoundBetter Section -->
             <div class="work-section">
                 <div class="work-content">
                     <div class="work-icon">
@@ -630,26 +781,48 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- UPDATED: Music Consultation Booking Section -->
+            <div class="booking-section" id="book-consultation">
+                <div class="booking-content">
+                    <div class="booking-icon">
+                        <!-- Changed to a compass icon (finding your sound) -->
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="booking-text">
+                        <h3>Find Your Sound</h3>
+                        <p>The most important thing for an artist or producer is finding your own sound. This discovery process can be incredibly enjoyable if you let it be.</p>
+                        
+                        <div class="price-info">
+                            <i class="fas fa-video"></i> $30 per hour • Zoom Call <!-- CHANGED FROM "$30/hour" -->
+                        </div>
+                        
+                        <p>On our Zoom call, we can discuss or work on any music you want. I'll answer your questions and we can talk about your musical journey and what you want from music in the future. I want to help you find your sound!</p>
+                        
+                        <a href="https://buy.stripe.com/6oUbJ1gXbe3d4WneJPejK00" target="_blank" class="booking-button">
+                            <i class="fas fa-calendar-check"></i> Book Your Session
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-		
-
 
         <footer>
             <p>© <span id="current-year"></span> Pete Hollis. All rights reserved.</p>
             <div class="social-links">
-    <a href="https://instagram.com/petehollis_" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://youtube.com/@petehollis" target="_blank" aria-label="YouTube">
-        <i class="fab fa-youtube"></i>
-    </a>
-    <a href="https://tiktok.com/@petehollis_" target="_blank" aria-label="TikTok">
-        <i class="fab fa-tiktok"></i>
-    </a>
-    <a href="mailto:pete@petehollis.com" aria-label="Email">
-        <i class="fas fa-envelope"></i>
-    </a>
-</div>
+                <a href="https://instagram.com/petehollis_" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@petehollis" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://tiktok.com/@petehollis_" target="_blank" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="mailto:pete@petehollis.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </footer>
     </div>
 
@@ -680,15 +853,18 @@
         <li>Indie Pop Music Production</li>
         <li>Song Mixing and Mastering</li>
         <li>Artist Development</li>
-        <li>Music Consultation</li>
+        <li>Music Consultation - $30 per hour Zoom sessions</li>
         <li>Remote Recording Sessions</li>
     </ul>
+    
+    <h3>Music Consultation Services</h3>
+    <p>One-on-one music consultation sessions available via Zoom. Help finding your unique sound as an artist or producer. Get expert feedback on your music, production techniques, songwriting, and career guidance for $30 per hour.</p>
     
     <h3>Genres</h3>
     <p>Indie Pop, Alternative, Electronic, Synth-pop, Bedroom Pop, Lo-fi</p>
     
     <h3>Keywords</h3>
-    <p>new music artist 2026, rising indie pop artist, hire music producer, indie pop producer for hire, music mixing services, professional music production, artist development, remote music collaboration</p>
+    <p>new music artist 2026, rising indie pop artist, hire music producer, indie pop producer for hire, music mixing services, professional music production, artist development, remote music collaboration, music consultant, finding your sound, Zoom music consultation</p>
 </div>
 </body>
 </html>
