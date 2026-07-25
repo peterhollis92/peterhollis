@@ -261,6 +261,37 @@
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(138, 154, 91, 0.2);
+            position: relative;
+        }
+
+        /* --- LATEST NEWS TAB - GREEN BACKGROUND (DESKTOP) --- */
+        .latest-news-tab {
+            position: absolute;
+            top: 0px;
+            right: -1px;
+            background: var(--deep-forest);
+            padding: 8px 28px 8px 28px;
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--light-sage);
+                border-left: 1px solid rgba(138, 154, 91, 0.3);
+    border-bottom: 1px solid rgba(138, 154, 91, 0.3);
+    border-top: none;
+    border-right: none;
+            z-index: 10;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .latest-news-tab:hover {
+            background: var(--moss-green);
+            color: #ffffff;
+            border-color: var(--deep-forest);
         }
 
         header {
@@ -593,7 +624,7 @@
         }
 
         .price-info {
-            color: white; /* CHANGED FROM GOLD TO WHITE */
+            color: white;
             font-weight: 500;
             margin-bottom: 10px;
             font-size: 1.1rem;
@@ -626,6 +657,7 @@
             color: var(--accent-gold);
         }
 
+        /* --- RESPONSIVE: TABLET (768px and below) --- */
         @media (max-width: 768px) {
             .links-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -653,8 +685,21 @@
             .section-title {
                 font-size: 1.8rem;
             }
+
+            /* Tablet Latest News Tab - Green with larger size */
+            .latest-news-tab {
+                font-size: 0.75rem;
+                padding: 6px 20px 6px 20px;
+                top: 0px;
+                right: -1px;
+                background: var(--deep-forest);
+                color: var(--light-sage);
+                letter-spacing: 2.5px;
+                border-radius: 6px 6px 0 0;
+            }
         }
 
+        /* --- RESPONSIVE: MOBILE (480px and below) --- */
         @media (max-width: 480px) {
             .links-grid {
                 grid-template-columns: 1fr;
@@ -684,11 +729,26 @@
             .about-section {
                 padding: 30px 20px 25px;
             }
+
+            /* Mobile Latest News Tab - Green with optimized size */
+            .latest-news-tab {
+                font-size: 0.6rem;
+                padding: 5px 14px 5px 14px;
+                top: 0px;
+                right: -1px;
+                background: var(--deep-forest);
+                color: var(--light-sage);
+                letter-spacing: 2px;
+                border-radius: 4px 4px 0 0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- LATEST NEWS TAB - GREEN BACKGROUND (DESKTOP) -->
+           <a href="news.html" class="latest-news-tab">Latest News</a>
+        
         <header>
             <div class="name-background"></div>
             <div class="header-content">
@@ -697,10 +757,7 @@
             </div>
         </header>
 
-       <div class="about-section">
-            <h2 class="about-title">About</h2>
-            <p class="tagline">Pete is a retro-pop producer, multi-instrumentalist, and singer-songwriter based in Chicago, IL, creating dreamy, nostalgic music in their apartment studio. Drawing inspiration from legends like Whitney Houston, Anita Baker, the Isley Brothers and more. Pete's music is a colorful blend of pop, funk, and 80's textures that make you feel like you've always known the song, even when it's your first time listening.</p>
-        </div>
+      
 
         <div class="section">
             <h2 class="section-title">Stream My Music</h2>
@@ -763,6 +820,11 @@
                     <div class="link-name">Music Store</div>
                 </a>
             </div>
+			
+			 <div class="about-section">
+            <h2 class="about-title">About</h2>
+            <p class="tagline">Pete is a retro-pop producer, multi-instrumentalist, and singer-songwriter based in Chicago, IL, creating dreamy, nostalgic music in their apartment studio. Drawing inspiration from legends like Whitney Houston, Anita Baker, the Isley Brothers and more. Pete's music is a colorful blend of pop, funk, and 80's textures that make you feel like you've always known the song, even when it's your first time listening.</p>
+        </div>
 
             <h2 class="section-title">Let's Work Together</h2>
             
@@ -841,8 +903,8 @@
             });
         });
     </script>
-	
-	<!-- ====== SEO-OPTIMIZED HIDDEN CONTENT ====== -->
+    
+    <!-- ====== SEO-OPTIMIZED HIDDEN CONTENT ====== -->
 <div style="display: none;" aria-hidden="true">
     <h1>Pete Hollis - Indie Pop Artist & Music Producer</h1>
     <h2>New Artist on the Rise</h2>
