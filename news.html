@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pete Hollis · Hollis News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Averia-Serif-GWF-Light';
+            src:url('Averia-Serif-GWF-Light.ttf.woff') format('woff'),
+                url('Averia-Serif-GWF-Light.ttf.svg#Averia-Serif-GWF-Light') format('svg'),
+                url('Averia-Serif-GWF-Light.ttf.eot'),
+                url('Averia-Serif-GWF-Light.ttf.eot?#iefix') format('embedded-opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #ffffff;
+            font-family: 'Frank Ruhl Libre', serif;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+            min-height: 100vh;
+        }
+        .newspaper {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            position: relative;
+        }
+
+        /* --- TOP BAR: left date, right label - NO EXTRA LINES --- */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #222;
+            padding: 0 0 8px 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        .top-bar .left { text-align: left; }
+        .top-bar .right { text-align: right; }
+
+        /* --- FULL WIDTH TITLE ROW - NO LINE ABOVE TITLE --- */
+        .title-wrapper {
+            display: flex;
+            align-items: stretch;
+            border: 3px solid #111;
+            border-bottom: none;
+            background: #ffffff;
+            margin: 0;
+        }
+        .home-btn-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-right: 2px solid #111;
+            flex-shrink: 0;
+            background: #ffffff;
+            width: 60px;
+        }
+        .home-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            color: #f5f3ee;
+            font-family: 'Averia-Serif-GWF-Light', 'Frank Ruhl Libre', serif;
+            font-weight: 900;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 60px;
+            border: none;
+            text-decoration: none;
+            transition: 0.2s;
+            text-align: center;
+            line-height: 1.1;
+            border-radius: 0;
+            position: relative;
+        }
+        .home-btn:hover {
+            background: #333;
+            color: #fff;
+        }
+        .home-btn .star {
+            position: absolute;
+            color: rgba(255,255,255,0.25);
+            font-size: 0.15rem;
+            animation: twinkle var(--duration, 2.0s) infinite alternate;
+            animation-delay: var(--delay, 0s);
+            pointer-events: none;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.05; transform: scale(0.5); }
+            100% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .title-block {
+            text-align: center;
+            flex: 1;
+            padding: 8px 16px 4px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .main-title {
+            font-family: 'Averia-Serif-GWF-Light', 'Frank Ruhl Libre', serif;
+            font-weight: 700;
+            font-size: 2.4rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #111;
+            padding: 0;
+            background: #ffffff;
+            line-height: 1.2;
+            text-align: center;
+            width: 100%;
+        }
+        .subhead {
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #444;
+            margin-top: -2px;
+            text-align: center;
+            width: 100%;
+        }
+        .title-spacer {
+            width: 60px;
+            flex-shrink: 0;
+            background: #ffffff;
+            border-left: 0px solid #111;
+        }
+
+        /* --- TWO COLUMN GRID - NO SPACE BETWEEN BOXES --- */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 0;
+            border: 2px solid #111;
+            border-top: 3px solid #111;
+        }
+
+        /* --- BOX 1: Photo + big "Sub Scribe" + black button --- */
+        .box-photo {
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            background: #ffffff;
+            border-right: 2px solid #111;
+            border-bottom: 2px solid #111;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+        }
+        .box-photo .photo-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #eae7e0;
+            border-bottom: 2px solid #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box-photo .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+        .photo-content {
+            padding: 16px 14px 20px;
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            min-height: 280px;
+            background: #ffffff;
+        }
+        .sub-scribe {
+            font-family: 'Averia-Serif-GWF-Light', 'Frank Ruhl Libre', serif;
+            font-weight: 900;
+            font-size: 5.8rem;
+            line-height: 0.7;
+            text-transform: uppercase;
+            color: #000000;
+            letter-spacing: -4px;
+            margin-top: -6px;
+            transform: scaleY(2.1);
+            transform-origin: top left;
+        }
+        .sub-scribe span {
+            display: block;
+        }
+        .black-box {
+            background: #111;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 2px solid #111;
+            max-width: 160px;
+            text-align: center;
+        }
+        .black-box .subscribe-btn {
+            background: transparent;
+            color: #f5f3ee;
+            font-family: 'Averia-Serif-GWF-Light', 'Frank Ruhl Libre', serif;
+            font-weight: 900;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: none;
+            padding: 6px 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            background: transparent;
+            line-height: 1.1;
+            transform: scaleY(1.25) scaleX(1.05);
+            transform-origin: center;
+        }
+        .black-box .subscribe-btn:hover {
+            color: #fff;
+            transform: scale(1.02) scaleY(1.25) scaleX(1.05);
+        }
+        .black-box .subscribe-btn .star {
+            position: absolute;
+            color: rgba(255,255,255,0.25);
+            font-size: 0.15rem;
+            animation: twinkle var(--duration, 2.0s) infinite alternate;
+            animation-delay: var(--delay, 0s);
+            pointer-events: none;
+        }
+        .news-label {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #222;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 10px;
+            border: none;
+            z-index: 2;
+        }
+
+        /* --- BOX 2: SPLIT LAYOUT (New Job) --- */
+        .box-split {
+            display: flex;
+            padding: 0;
+            background: #ffffff;
+            border-right: 2px solid #111;
+            border-bottom: 2px solid #111;
+            height: 200px;
+            overflow: hidden;
+        }
+        .box-split .left {
+            flex: 1;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: #ffffff;
+        }
+        .box-split .left h3 {
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #111;
+            border-bottom: 1px solid #111;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .box-split .left p {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #111;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+        .box-split .right {
+            width: 50%;
+            background: #d5d0c6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border-left: 2px solid #111;
+            overflow: hidden;
+        }
+        .box-split .right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- BOX 3: SPLIT LAYOUT (Hollis Wedding) --- */
+        .box-wedding {
+            display: flex;
+            padding: 0;
+            background: #ffffff;
+            border-right: 2px solid #111;
+            border-bottom: 2px solid #111;
+            height: 275px;
+            overflow: hidden;
+        }
+        .box-wedding .left {
+            flex: 1;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: #ffffff;
+        }
+        .box-wedding .left h3 {
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #111;
+            border-bottom: 1px solid #111;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .box-wedding .left p {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #111;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+        .box-wedding .right {
+            width: 50%;
+            background: #d5d0c6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border-left: 2px solid #111;
+            overflow: hidden;
+        }
+        .box-wedding .right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 90% 25%;
+        }
+
+        /* --- TOP RIGHT BOX: SoundCloud Player --- */
+        .box-soundcloud {
+            background: #ffffff;
+            border-right: 2px solid #111;
+            border-bottom: 2px solid #111;
+            padding: 12px 14px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(-275px);
+        }
+        .box-soundcloud h3 {
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #111;
+            border-bottom: 1px solid #111;
+            padding-bottom: 4px;
+            margin-bottom: 8.5px;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        .box-soundcloud iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Bottom Left - BOX 4: Upcoming Shows --- */
+        .box-upcoming {
+            background: #ffffff;
+            border-right: 2px solid #111;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 275px;
+            position: relative;
+        }
+        .box-upcoming::before {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: -30px;
+            height: calc(100% + 30px);
+            width: 2px;
+            background: #111;
+        }
+        .box-upcoming h3 {
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #111;
+            padding-bottom: 6px;
+            margin-bottom: 6px;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+        }
+        .box-upcoming p {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #1a1a1a;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        /* --- RIGHT COLUMN - BOX 3: Debut Album with Image & SoundCloud --- */
+        .box-album {
+            background: #ffffff;
+            border-right: 2px solid #111;
+            border-bottom: 2px solid #111;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 295px;
+            position: relative;
+            overflow: visible;
+            z-index: 1;
+        }
+
+        .box-album::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 2px;
+            background: #111;
+            z-index: 5;
+        }
+
+        .box-album .album-top-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 14px;
+            width: 100%;
+            margin-top: -255px;
+            margin-bottom: 60px;
+            margin-left: 60px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .box-album .album-image {
+            width: 50%;
+            max-width: 200px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: block;
+            position: relative;
+            z-index: 20;
+            margin-top: 0;
+        }
+
+        .box-album .album-image:hover {
+            transform: scale(1.02);
+        }
+
+        .box-album .album-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #111;
+        }
+
+        .box-album .now-playing {
+            font-family: 'Averia-Serif-GWF-Light', 'Frank Ruhl Libre', serif;
+            font-weight: 900;
+            font-size: 2.8rem;
+            line-height: 0.75;
+            text-transform: uppercase;
+            color: #000000;
+            letter-spacing: -3px;
+            transform: scaleY(1.9);
+            transform-origin: top left;
+            text-align: left;
+            flex: 1;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .box-album .now-playing span {
+            display: block;
+        }
+
+        .box-album .album-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-top: 0;
+        }
+
+        .box-album h3 {
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #111;
+            border-bottom: 1px solid #111;
+            padding-bottom: 4px;
+            margin-bottom: 6px;
+            margin-top: 0;
+            width: 100%;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .box-album p {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 0.7rem;
+            line-height: 1.4;
+            color: #1a1a1a;
+            font-weight: 300;
+            text-align: left;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .box-album iframe {
+            width: 100%;
+            height: 180px;
+            border: none;
+            margin-top: 4px;
+        }
+
+        /* remove border on last row bottom */
+        .grid .box-photo:last-child,
+        .grid .box-split:last-child,
+        .grid .box-wedding:last-child,
+        .grid .box-soundcloud:last-child,
+        .grid .box-upcoming:last-child,
+        .grid .box-album:last-child {
+            border-bottom: none;
+        }
+        .grid > div:last-child {
+            border-bottom: none;
+        }
+        .grid .box-photo:nth-child(even),
+        .grid .box-split:nth-child(even),
+        .grid .box-wedding:nth-child(even),
+        .grid .box-soundcloud:nth-child(even),
+        .grid .box-upcoming:nth-child(even),
+        .grid .box-album:nth-child(even) {
+            border-right: none;
+        }
+
+        /* --- RESPONSIVE: MOBILE (700px and below) --- */
+        @media (max-width: 700px) {
+            body { padding: 12px; }
+            
+            .title-wrapper {
+                flex-wrap: wrap;
+                border: 2px solid #111;
+            }
+            
+            .home-btn-wrapper {
+                border-right: none;
+                border-bottom: 2px solid #111;
+                padding: 0;
+                width: 100%;
+                height: 50px;
+            }
+            
+            .home-btn {
+                min-height: 50px;
+                width: 100%;
+            }
+            
+            .title-spacer {
+                display: none;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+                border: 2px solid #111;
+                border-top: 3px solid #111;
+            }
+            
+            /* All boxes stack vertically with proper spacing */
+            .box-photo, .box-split, .box-wedding, .box-soundcloud, .box-upcoming, .box-album {
+                border-right: none;
+                border-bottom: 2px solid #111;
+                width: 100%;
+                min-height: auto;
+                height: auto;
+            }
+            
+            .box-photo:last-child,
+            .box-split:last-child,
+            .box-wedding:last-child,
+            .box-soundcloud:last-child,
+            .box-upcoming:last-child,
+            .box-album:last-child {
+                border-bottom: none;
+            }
+            
+            /* Fix SoundCloud box positioning */
+            .box-soundcloud {
+                transform: none;
+                padding: 16px 14px;
+                min-height: auto;
+            }
+            
+            .box-soundcloud iframe {
+                height: 120px;
+            }
+            
+            /* Fix split boxes on mobile */
+            .box-split, .box-wedding {
+                flex-direction: column;
+                height: auto;
+                min-height: auto;
+            }
+            
+            .box-split .right, .box-wedding .right {
+                width: 100%;
+                height: 180px;
+                border-left: none;
+                border-top: 2px solid #111;
+            }
+            
+            .box-split .left, .box-wedding .left {
+                padding: 16px 14px;
+                width: 100%;
+            }
+            
+            /* Fix Album box on mobile */
+            .box-album {
+                padding: 16px 14px;
+                min-height: auto;
+            }
+            
+			    .box-album .album-top-row::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #111;
+        margin-top: 12px;
+        position: relative;
+		        width: calc(100% + 28px); /* 14px left + 14px right padding */
+    }
+			
+            .box-album .album-top-row {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 0;
+                margin-left: 0;
+                margin-bottom: 16px;
+                gap: 12px;
+                width: 100%;
+            }
+            
+            .box-album .album-image {
+                width: 60%;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+            
+            .box-album .now-playing {
+                font-size: 2.4rem;
+                text-align: center;
+                transform: scaleY(1.5);
+                transform-origin: center;
+                width: 100%;
+            }
+            
+            .box-album .now-playing span {
+                display: inline;
+                margin: 0 4px;
+            }
+            
+            .box-album h3,
+            .box-album p {
+                text-align: center;
+            }
+            
+            .box-album iframe {
+                height: 120px;
+            }
+            
+            /* Fix Upcoming Shows box */
+            .box-upcoming {
+                min-height: auto;
+                padding: 20px 14px;
+            }
+            
+            .box-upcoming::before {
+                display: none;
+            }
+            
+            /* Fix Subscribe box on mobile */
+            .box-photo {
+                min-height: auto;
+            }
+            
+            .box-photo .photo-container {
+                height: 200px;
+            }
+            
+            .photo-content {
+                min-height: auto;
+                padding: 16px 14px 60px;
+                flex-wrap: wrap;
+            }
+            
+            .sub-scribe {
+                font-size: 4.5rem;
+                transform: scaleY(1.6);
+            }
+            
+            .black-box {
+                position: relative;
+                bottom: -50px;
+                right: auto;
+                margin-top: 16px;
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            /* Fix title on mobile */
+            .main-title {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .top-bar {
+                font-size: 0.6rem;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+        }
+
+        /* --- RESPONSIVE: SMALL MOBILE (400px and below) --- */
+        @media (max-width: 400px) {
+            .main-title {
+                font-size: 1.4rem;
+            }
+            
+            .sub-scribe {
+                font-size: 3.6rem;
+                transform: scaleY(1.5);
+            }
+            
+            .home-btn {
+                font-size: 0.7rem;
+                min-height: 44px;
+            }
+            
+            .home-btn-wrapper {
+                height: 44px;
+            }
+            
+            .black-box .subscribe-btn {
+                font-size: 0.65rem;
+                transform: scaleY(1.2) scaleX(1.03);
+            }
+            
+            .box-split .left h3,
+            .box-wedding .left h3 {
+                font-size: 0.85rem;
+            }
+            
+            .box-split .left p,
+            .box-wedding .left p {
+                font-size: 0.65rem;
+            }
+            
+            .box-album .album-image {
+                width: 70%;
+                max-width: 150px;
+            }
+            
+            .box-album .now-playing {
+                font-size: 1.8rem;
+            }
+            
+            .box-split .right,
+            .box-wedding .right {
+                height: 140px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="newspaper">
+
+    <!-- TOP BAR: left date, right label -->
+    <div class="top-bar">
+        <span class="left">Chicago IL, 2026</span>
+        <span class="right">Pete Hollis Records</span>
+    </div>
+
+    <!-- TITLE WRAPPER: full width with home button integrated -->
+    <div class="title-wrapper">
+        <div class="home-btn-wrapper">
+            <a href="https://petehollis.com" class="home-btn" id="homeBtn">
+                Home
+                <span class="star" style="top: 2px; left: 2px; --duration: 1.8s; --delay: 0.1s;">✦</span>
+                <span class="star" style="top: 2px; right: 2px; --duration: 2.2s; --delay: 0.4s;">✦</span>
+                <span class="star" style="bottom: 2px; left: 4px; --duration: 1.6s; --delay: 0.7s;">✦</span>
+                <span class="star" style="bottom: 2px; right: 4px; --duration: 2.0s; --delay: 0.2s;">✦</span>
+                <span class="star" style="top: 50%; left: 3px; --duration: 1.9s; --delay: 0.9s;">✦</span>
+                <span class="star" style="top: 50%; right: 3px; --duration: 1.7s; --delay: 0.3s;">✦</span>
+                <span class="star" style="top: 15%; left: 40%; --duration: 2.3s; --delay: 0.5s;">✦</span>
+                <span class="star" style="bottom: 15%; right: 40%; --duration: 1.5s; --delay: 0.8s;">✦</span>
+                <span class="star" style="top: 30%; right: 20%; --duration: 2.1s; --delay: 0.6s;">✦</span>
+                <span class="star" style="bottom: 30%; left: 20%; --duration: 1.8s; --delay: 1.0s;">✦</span>
+                <span class="star" style="top: 10%; left: 65%; --duration: 2.0s; --delay: 0.2s;">✦</span>
+                <span class="star" style="bottom: 10%; right: 65%; --duration: 1.6s; --delay: 0.7s;">✦</span>
+                <span class="star" style="top: 40%; left: 15%; --duration: 2.4s; --delay: 1.1s;">✦</span>
+                <span class="star" style="bottom: 40%; right: 15%; --duration: 1.9s; --delay: 0.4s;">✦</span>
+                <span class="star" style="top: 60%; left: 8%; --duration: 1.7s; --delay: 0.9s;">✦</span>
+                <span class="star" style="bottom: 60%; right: 8%; --duration: 2.1s; --delay: 0.5s;">✦</span>
+                <span class="star" style="top: 25%; left: 25%; --duration: 1.5s; --delay: 0.3s;">✦</span>
+                <span class="star" style="top: 75%; right: 25%; --duration: 2.2s; --delay: 0.8s;">✦</span>
+                <span class="star" style="top: 5%; left: 80%; --duration: 1.8s; --delay: 0.1s;">✦</span>
+                <span class="star" style="bottom: 5%; right: 80%; --duration: 2.0s; --delay: 0.6s;">✦</span>
+            </a>
+        </div>
+        <div class="title-block">
+            <div class="main-title">Hollis News</div>
+            <div class="subhead">the best place to know what Pete is up to!</div>
+        </div>
+        <div class="title-spacer"></div>
+    </div>
+
+    <!-- TWO COLUMN GRID -->
+    <div class="grid">
+
+        <!-- LEFT COLUMN -->
+        <!-- BOX 1: Photo + Sub Scribe + black button -->
+        <div class="box-photo">
+            <div class="photo-container">
+                <img src="https://i.imgur.com/J6z1CSJ.jpeg" alt="Pete Singing">
+            </div>
+            <div class="photo-content">
+                <div class="sub-scribe">
+                    <span>Sub</span>
+                    <span>Scribe</span>
+                </div>
+                <div class="black-box">
+                    <button class="subscribe-btn" id="subscribeBtn">
+                        Subscribe for News
+                        <span class="star" style="top: -2px; left: 2px; --duration: 1.8s; --delay: 0.1s;">✦</span>
+                        <span class="star" style="top: -2px; right: 2px; --duration: 2.2s; --delay: 0.4s;">✦</span>
+                        <span class="star" style="bottom: -2px; left: 4px; --duration: 1.6s; --delay: 0.7s;">✦</span>
+                        <span class="star" style="bottom: -2px; right: 4px; --duration: 2.0s; --delay: 0.2s;">✦</span>
+                        <span class="star" style="top: 50%; left: -4px; --duration: 1.9s; --delay: 0.9s;">✦</span>
+                        <span class="star" style="top: 50%; right: -4px; --duration: 1.7s; --delay: 0.3s;">✦</span>
+                        <span class="star" style="top: 10%; left: 30%; --duration: 2.3s; --delay: 0.5s;">✦</span>
+                        <span class="star" style="bottom: 10%; right: 25%; --duration: 1.5s; --delay: 0.8s;">✦</span>
+                        <span class="star" style="top: 20%; right: 15%; --duration: 2.1s; --delay: 0.6s;">✦</span>
+                        <span class="star" style="bottom: 20%; left: 20%; --duration: 1.8s; --delay: 1.0s;">✦</span>
+                        <span class="star" style="top: 40%; left: 8%; --duration: 2.0s; --delay: 0.2s;">✦</span>
+                        <span class="star" style="bottom: 35%; right: 8%; --duration: 1.6s; --delay: 0.7s;">✦</span>
+                        <span class="star" style="top: 5%; left: 60%; --duration: 2.4s; --delay: 1.1s;">✦</span>
+                        <span class="star" style="bottom: 5%; right: 55%; --duration: 1.9s; --delay: 0.4s;">✦</span>
+                        <span class="star" style="top: 60%; left: 20%; --duration: 1.7s; --delay: 0.9s;">✦</span>
+                        <span class="star" style="bottom: 60%; right: 20%; --duration: 2.1s; --delay: 0.5s;">✦</span>
+                        <span class="star" style="top: 45%; left: 45%; --duration: 1.5s; --delay: 0.3s;">✦</span>
+                        <span class="star" style="top: 15%; right: 40%; --duration: 2.2s; --delay: 0.8s;">✦</span>
+                        <span class="star" style="bottom: 15%; left: 40%; --duration: 1.8s; --delay: 0.1s;">✦</span>
+                        <span class="star" style="top: 70%; left: 10%; --duration: 2.0s; --delay: 0.6s;">✦</span>
+                        <span class="star" style="top: 80%; left: 40%; --duration: 1.6s; --delay: 0.3s;">✦</span>
+                        <span class="star" style="bottom: 80%; right: 40%; --duration: 2.4s; --delay: 0.9s;">✦</span>
+                        <span class="star" style="top: 30%; left: 70%; --duration: 1.9s; --delay: 0.5s;">✦</span>
+                        <span class="star" style="bottom: 30%; right: 70%; --duration: 1.7s; --delay: 1.2s;">✦</span>
+                        <span class="star" style="top: 55%; left: 15%; --duration: 2.1s; --delay: 0.4s;">✦</span>
+                        <span class="star" style="bottom: 55%; right: 15%; --duration: 1.5s; --delay: 0.8s;">✦</span>
+                        <span class="star" style="top: 12%; left: 85%; --duration: 2.3s; --delay: 0.2s;">✦</span>
+                        <span class="star" style="bottom: 12%; right: 85%; --duration: 1.8s; --delay: 0.7s;">✦</span>
+                        <span class="star" style="top: 65%; left: 5%; --duration: 2.0s; --delay: 0.1s;">✦</span>
+                        <span class="star" style="bottom: 65%; right: 5%; --duration: 1.6s; --delay: 0.6s;">✦</span>
+                    </button>
+                </div>
+                <div class="news-label">News</div>
+            </div>
+        </div>
+
+        <!-- LEFT COLUMN - BOX 2: New Job -->
+        <div class="box-split">
+            <div class="left">
+                <h3>NEW JOB AT 4 STAR HOTEL</h3>
+                <p>From "First Sip Cafe" to "The Graduate Hotel" in Evanston, IL, Pete's barista services are still in motion. Drop by, visit Pete and get a coffee or a breakfast cocktail!</p>
+            </div>
+            <div class="right">
+                <img src="https://i.imgur.com/7xccCxv.jpeg" alt="The Graduate Hotel">
+            </div>
+        </div>
+
+        <!-- LEFT COLUMN - BOX 3: Hollis Wedding -->
+        <div class="box-wedding">
+            <div class="left">
+                <h3>Hollis Wedding Bells</h3>
+                <p>Pete Hollis and Angelina Hutto are joining in the holiest of matrimony this October. From neighbors, to friends, Pete and Angelina found comfort and peace with each other. They soon began dating and in October of 2024 Peter proposed to Angelina on stage at the Bourbon Bandstand in the French Quarter in New Orleans. As the live band played "Caught up in the Rapture" by Anita Baker, Peter proposed.</p>
+            </div>
+            <div class="right">
+                <img src="https://i.imgur.com/KD621pI.jpeg" alt="Pete and Angelina Wedding">
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <!-- TOP RIGHT: SoundCloud Player -->
+        <div class="box-soundcloud">
+            <h3>New Single out everywhere August 14</h3>
+            <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/petehollis/angelina-you-turned-my-life&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+
+        <!-- RIGHT COLUMN - BOX 2: Upcoming Shows -->
+        <div class="box-upcoming">
+            <h3>Upcoming Shows</h3>
+            <p>Secret House Show to be Announced soon...</p>
+        </div>
+
+        <!-- RIGHT COLUMN - BOX 3: Debut Album -->
+        <div class="box-album">
+            <div class="album-top-row">
+                <a href="https://distrokid.com/hyperfollow/petehollis1/hit-the-floor-feat-trynket?ref=release" target="_blank" class="album-image">
+                    <img src="https://i.imgur.com/OSLSAul.jpeg" alt="The Back of My Volvo Album Art">
+                </a>
+                <div class="now-playing">
+                    <span>Now</span>
+                    <span>Playing</span>
+                </div>
+            </div>
+            <div class="album-bottom">
+                <h3>Debut Album</h3>
+                <p>Listen to Pete's debut album "The Back of My Volvo" — a blend of retro-pop and soulful storytelling.</p>
+                <iframe width="100%" height="110" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/petehollis/sets/the-back-of-my-volvo-full&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- modal for subscribe -->
+<div style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;align-items:center;justify-content:center;" id="modalOverlay">
+    <div style="background:#ffffff; padding:32px 36px; border:3px solid #111; max-width:420px; width:90%; position:relative; box-shadow:12px 12px 0 rgba(0,0,0,0.2);">
+        <span style="position:absolute; top:8px; right:14px; font-size:1.8rem; cursor:pointer; color:#111;" id="closeModalBtn">&times;</span>
+        <h2 style="font-family:'Averia-Serif-GWF-Light','Frank Ruhl Libre',serif; font-weight:700; font-size:1.4rem; letter-spacing:2px; text-transform:uppercase; color:#111; text-align:center; border-bottom:2px solid #111; padding-bottom:8px;">Subscribe</h2>
+        <p style="font-family:'Frank Ruhl Libre',serif; font-size:0.85rem; color:#222; text-align:center; margin:12px 0 18px;">Enter your email for updates on music, shows, and more.</p>
+        <form id="subscribeForm" action="https://formsubmit.co/peter.derwood@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Newsletter Subscription!">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://petehollis.com">
+            <label style="font-family:'Cabin Condensed',sans-serif; font-size:0.75rem; letter-spacing:1px; text-transform:uppercase; color:#111; font-weight:600; display:block; margin-bottom:4px;">Email Address</label>
+            <input type="email" name="email" placeholder="you@example.com" required style="width:100%; padding:10px 14px; border:2px solid #111; background:#fff; font-family:'Frank Ruhl Libre',serif; font-size:0.95rem; margin-bottom:14px; outline:none;">
+            <div style="display:flex; gap:12px; justify-content:center; margin-top:6px;">
+                <button type="submit" style="background:#111; color:#ffffff; font-family:'Averia-Serif-GWF-Light','Frank Ruhl Libre',serif; font-weight:900; font-size:0.85rem; letter-spacing:1.5px; text-transform:uppercase; padding:10px 28px; border:2px solid #111; cursor:pointer;">Subscribe</button>
+                <button type="button" style="background:#fff; color:#111; font-family:'Averia-Serif-GWF-Light','Frank Ruhl Libre',serif; font-weight:900; font-size:0.85rem; letter-spacing:1.5px; text-transform:uppercase; padding:10px 28px; border:2px solid #111; cursor:pointer;" id="cancelModalBtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const subscribeBtn = document.getElementById('subscribeBtn');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelModalBtn = document.getElementById('cancelModalBtn');
+
+    function openModal() {
+        modalOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    subscribeBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelModalBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
+    });
+</script>
+
+</body>
+</html>
